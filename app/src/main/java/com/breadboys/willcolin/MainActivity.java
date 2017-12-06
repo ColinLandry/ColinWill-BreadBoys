@@ -104,13 +104,21 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.nav_recipe) {
-
+            transaction.replace(R.id.content, new RecipeFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_order) {
-
+            transaction.replace(R.id.content, new OrderFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_contact) {
-
+            transaction.replace(R.id.content, new ContactFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_settings) {
-
+            transaction.replace(R.id.content, new SettingsFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
