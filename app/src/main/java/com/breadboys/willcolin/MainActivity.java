@@ -1,8 +1,11 @@
 package com.breadboys.willcolin;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,14 +17,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+                    OrderFragment.OnFragmentInteractionListener,
+                    LoavesFragment.OnFragmentInteractionListener,
+                    RecipeFragment.OnFragmentInteractionListener,
+                    SettingsFragment.OnFragmentInteractionListener{
 
+   FragmentManager fm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fm = getSupportFragmentManager();
+        //if this is the first time we run the app
+        if(savedInstanceState == null){
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.replace(R.id.content, new LoavesFragment());
+            transaction.commit();
+        }
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -79,23 +97,28 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentTransaction transaction = fm.beginTransaction();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_loaves) {
+            transaction.replace(R.id.content, new LoavesFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if (id == R.id.nav_recipe) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_order) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_contact) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
