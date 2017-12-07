@@ -18,7 +18,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                    OrderFragment.OnFragmentInteractionListener,
+                    CheckoutFragment.OnFragmentInteractionListener,
                     LoavesFragment.OnFragmentInteractionListener,
                     RecipeFragment.OnFragmentInteractionListener,
                     SettingsFragment.OnFragmentInteractionListener{
@@ -107,8 +107,8 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.content, new RecipeFragment());
             transaction.addToBackStack(null);
             transaction.commit();
-        } else if (id == R.id.nav_order) {
-            transaction.replace(R.id.content, new OrderFragment());
+        } else if (id == R.id.nav_checkout) {
+            transaction.replace(R.id.content, new CheckoutFragment());
             transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.nav_contact) {
