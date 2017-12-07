@@ -1,12 +1,14 @@
 package com.breadboys.willcolin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -26,6 +28,12 @@ public class ContactFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //Create buttons
+    Button websiteButton;
+    Button emailButton;
+    Button callButton;
+    Button fbButton;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,7 +72,25 @@ public class ContactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact, container, false);
+        View view = inflater.inflate(R.layout.fragment_contact, container, false);
+
+        //Connect buttons with layout items
+        websiteButton = (Button) view.findViewById(R.id.websiteButton);
+        emailButton = (Button) view.findViewById(R.id.emailButton);
+        callButton = (Button) view.findViewById(R.id.callButton);
+        fbButton = (Button) view.findViewById(R.id.fbButton);
+
+        //Launch call intent
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_CALL);
+
+            }
+        });
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
