@@ -84,7 +84,7 @@ public class ContactFragment extends Fragment {
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_CALL)
+                Intent i = new Intent(Intent.ACTION_CALL);
 
             }
         });
