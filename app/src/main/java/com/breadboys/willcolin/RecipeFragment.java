@@ -94,12 +94,12 @@ public class RecipeFragment extends Fragment {
          */
         public Fragment getItem(int position){
             switch(position){
-                case 0: return RecipePageFragment.newInstance("Rustic Loaf",".........",0);
-                case 1: return RecipePageFragment.newInstance("Classic Bun","..........",1);
-                case 2: return RecipePageFragment.newInstance("Sweet Bread","................",2);
-                case 3: return RecipePageFragment.newInstance("Sour Dough",".............",3);
-                case 4: return RecipePageFragment.newInstance("Yumyum Bread","..............",4);
-                default: return RecipePageFragment.newInstance("White Bread","...............",5);
+                case 0: return RecipePageFragment.newInstance("Mix it Up","We combine our flour, yeast and yams.",0);
+                case 1: return RecipePageFragment.newInstance("Combine","We hand mix the ingredients together",1);
+                case 2: return RecipePageFragment.newInstance("Let it rest","We grease a bowl and the bread rest till it doubles in size",2);
+                case 3: return RecipePageFragment.newInstance("Knead","We lovingly punch it down and knead it out",3);
+                case 4: return RecipePageFragment.newInstance("Bake","We then make the dough in our stone oven",4);
+                default: return RecipePageFragment.newInstance("Enjoy","Congratulations you made a version of our Yumyum Bread",5);
             }
         }
 

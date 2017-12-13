@@ -14,12 +14,13 @@
         android:layout_height="302dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
-        app:srcCompat="@drawable/mainpageimage" />
+        app:srcCompat="@drawable/mainpageimage"
+        tools:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="221dp"
         android:text="@string/home_desc"
         android:textAlignment="center"
         android:textSize="@dimen/subTitle_fontSize" />
