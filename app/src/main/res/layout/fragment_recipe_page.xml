@@ -12,7 +12,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="153dp"
-        android:layout_weight="0.06"
+        android:layout_weight="0.86"
         android:id="@+id/imageViewRecipe"
         android:src="@drawable/mainpageimage"/>
 
@@ -21,13 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="TextView"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="@dimen/title_fontSize" />
 
     <TextView
         android:id="@+id/recipedesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.14"
         android:text="TextView"
         android:textAlignment="center"
-        android:layout_weight="0.14" />
+        android:textSize="@dimen/text_fontSize" />
 </LinearLayout>
