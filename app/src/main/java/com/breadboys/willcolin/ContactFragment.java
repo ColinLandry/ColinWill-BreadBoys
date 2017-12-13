@@ -96,10 +96,33 @@ public class ContactFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_SENDTO);
+                String[] emailAddress = {"bread.boys@hotmail.com"};
                 i.setData(Uri.parse("mailto:"));
-                i.putExtra(Intent.EXTRA_EMAIL, "bread.boys@hotmail.com");
+                i.putExtra(Intent.EXTRA_EMAIL, emailAddress);
                 i.putExtra(Intent.EXTRA_SUBJECT, "Bread Boys Question");
                 i.putExtra(Intent.EXTRA_TEXT, "Greetings Bread Boys, ");
+                if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(i);
+                }
+            }
+        });
+
+        fbButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri web = Uri.parse("https://www.facebook.com/Bread-Boys-416581148756920/");
+                Intent i = new Intent(Intent.ACTION_VIEW, web);
+                if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(i);
+                }
+            }
+        });
+
+        websiteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri web = Uri.parse("https://en.wikipedia.org/wiki/Bread");
+                Intent i = new Intent(Intent.ACTION_VIEW, web);
                 if(i.resolveActivity(getActivity().getPackageManager()) != null){
                     startActivity(i);
                 }
