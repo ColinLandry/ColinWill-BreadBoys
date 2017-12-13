@@ -10,11 +10,13 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
+        android:id="@+id/imageViewRecipe"
         android:layout_width="match_parent"
         android:layout_height="153dp"
         android:layout_weight="0.86"
-        android:id="@+id/imageViewRecipe"
-        android:src="@drawable/mainpageimage"/>
+        android:src="@drawable/mainpageimage"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/recipetitle"

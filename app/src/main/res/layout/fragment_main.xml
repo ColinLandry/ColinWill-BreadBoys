@@ -11,17 +11,19 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="302dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
+        android:layout_height="326dp"
         app:srcCompat="@drawable/mainpageimage"
-        tools:scaleType="centerCrop" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="221dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/home_desc"
         android:textAlignment="center"
-        android:textSize="@dimen/subTitle_fontSize" />
+        android:textSize="18sp" />
 </LinearLayout>
