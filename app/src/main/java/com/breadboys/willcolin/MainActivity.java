@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity
                     LoavesFragment.OnFragmentInteractionListener,
                     RecipeFragment.OnFragmentInteractionListener,
                     SettingsFragment.OnFragmentInteractionListener,
-                    ContactFragment.OnFragmentInteractionListener{
+                    ContactFragment.OnFragmentInteractionListener,
+                    MainFragment.OnFragmentInteractionListener{
 
    FragmentManager fm;
     @Override
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         //if this is the first time we run the app
         if(savedInstanceState == null){
             FragmentTransaction transaction = fm.beginTransaction();
-            transaction.replace(R.id.content, new LoavesFragment());
+            transaction.replace(R.id.content, new MainFragment());
             transaction.commit();
         }
 
@@ -118,6 +119,10 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
         } else if (id == R.id.nav_settings) {
             transaction.replace(R.id.content, new SettingsFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if (id == R.id.nav_main) {
+            transaction.replace(R.id.content, new MainFragment());
             transaction.addToBackStack(null);
             transaction.commit();
         }
