@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity
                     RecipeFragment.OnFragmentInteractionListener,
                     SettingsFragment.OnFragmentInteractionListener,
                     ContactFragment.OnFragmentInteractionListener,
-                    MainFragment.OnFragmentInteractionListener{
+                    MainFragment.OnFragmentInteractionListener,
+                    RecipePageFragment.OnFragmentInteractionListener{
 
    FragmentManager fm;
     @Override

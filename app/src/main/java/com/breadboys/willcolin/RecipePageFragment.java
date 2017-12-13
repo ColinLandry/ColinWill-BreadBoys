@@ -69,8 +69,11 @@ public class RecipePageFragment extends Fragment {
 
         TextView recipetitle = (TextView) view.findViewById(R.id.recipetitle);
         TextView recipedesc = (TextView) view.findViewById(R.id.recipedesc);
-        if(mParam1 != null & mParam2 != null){
+        if(mParam1 != null){
             recipetitle.setText(mParam1);
+
+        }
+        if(mParam2 != null){
             recipedesc.setText(mParam2);
         }
 
