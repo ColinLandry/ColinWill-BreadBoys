@@ -84,12 +84,27 @@ public class ContactFragment extends Fragment {
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_CALL);
-
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("tel:1111111111"));
+                if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(i);
+                }
             }
         });
 
-
+        emailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_SENDTO);
+                i.setData(Uri.parse("mailto:"));
+                i.putExtra(Intent.EXTRA_EMAIL, "bread.boys@hotmail.com");
+                i.putExtra(Intent.EXTRA_SUBJECT, "Bread Boys Question");
+                i.putExtra(Intent.EXTRA_TEXT, "Greetings Bread Boys, ");
+                if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(i);
+                }
+            }
+        });
         return view;
     }
 
