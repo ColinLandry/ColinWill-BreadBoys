@@ -25,10 +25,12 @@ public class RecipeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int mParam3;
 
     private OnFragmentInteractionListener mListener;
 
@@ -45,11 +47,12 @@ public class RecipeFragment extends Fragment {
      * @return A new instance of fragment RecipeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecipeFragment newInstance(String param1, String param2) {
+    public static RecipeFragment newInstance(String param1, String param2, int param3) {
         RecipeFragment fragment = new RecipeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,6 +63,7 @@ public class RecipeFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam3 = getArguments().getInt(ARG_PARAM3);
         }
     }
 
@@ -90,12 +94,12 @@ public class RecipeFragment extends Fragment {
          */
         public Fragment getItem(int position){
             switch(position){
-                case 0: return RecipePageFragment.newInstance("Rustic Loaf",".........");
-                case 1: return RecipePageFragment.newInstance("Classic Bun","..........");
-                case 2: return RecipePageFragment.newInstance("Sweet Bread","................");
-                case 3: return RecipePageFragment.newInstance("Sour Dough",".............");
-                case 4: return RecipePageFragment.newInstance("Yumyum Bread","..............");
-                default: return RecipePageFragment.newInstance("White Bread","...............");
+                case 0: return RecipePageFragment.newInstance("Rustic Loaf",".........",0);
+                case 1: return RecipePageFragment.newInstance("Classic Bun","..........",1);
+                case 2: return RecipePageFragment.newInstance("Sweet Bread","................",2);
+                case 3: return RecipePageFragment.newInstance("Sour Dough",".............",3);
+                case 4: return RecipePageFragment.newInstance("Yumyum Bread","..............",4);
+                default: return RecipePageFragment.newInstance("White Bread","...............",5);
             }
         }
 
