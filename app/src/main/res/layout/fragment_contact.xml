@@ -24,7 +24,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_weight="0.75"
-        android:text="Website"
+        android:text="Bread Wiki"
         android:textAllCaps="false"
         android:textSize="@dimen/button_fontSize" />
 
