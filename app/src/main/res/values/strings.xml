@@ -4,5 +4,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="home_desc">Hello and welcome to the official bread boys app</string>
+    <string name="home_desc"> \t We are an independent bread making company
+        called the Bread Boys, we’ve worked tirelessly over the past 10 weeks
+        to create a brand name for ourselves. We’ve been churning out different
+        homemade bread loaves and the results are phenomenal. The Bakery Boys strive
+        to emulate a professional brand with quality products. Our goal is to
+        provide a bakery aimed at serving the customer.
+    </string>
 </resources>

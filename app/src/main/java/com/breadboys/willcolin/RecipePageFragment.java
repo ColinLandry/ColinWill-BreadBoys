@@ -32,11 +32,11 @@ public class RecipePageFragment extends Fragment {
     private String mParam2;
     private int mParam3;
     int[] mResources = {
-            R.drawable.mainpageimage,
-            R.drawable.ic_menu_camera,
-            R.drawable.ic_menu_gallery,
-            R.drawable.ic_menu_manage,
-            R.drawable.ic_menu_slideshow
+            R.drawable.incredients,
+            R.drawable.mixing,
+            R.drawable.resting,
+            R.drawable.knead,
+            R.drawable.bake
     };
     private OnFragmentInteractionListener mListener;
 
