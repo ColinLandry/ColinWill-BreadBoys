@@ -75,11 +75,13 @@
                 android:textColor="#343434"
                 android:textSize="12sp" />
 
-            <ImageView
-                android:id="@+id/minusImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_remove" />
+            <Button
+                android:id="@+id/minusButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="-"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/quantity"
@@ -92,11 +94,13 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/plusImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_plus" />
+            <Button
+                android:id="@+id/plusButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="+"
+                android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

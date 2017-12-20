@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.breadboys.willcolin.JavaBeans.DataType;
-
-import org.w3c.dom.Text;
+import com.breadboys.willcolin.JavaBeans.Loaf;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 /**
@@ -79,30 +79,14 @@ public class LoavesFragment extends Fragment {
 
         list = (ListView) view.findViewById(R.id.loavesListView);
 
-        ArrayList<DataType> dataTypeList = new ArrayList<DataType>();
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
-
-        CustomAdapter adapter = new CustomAdapter(getContext(), dataTypeList);
+        CustomAdapter adapter = new CustomAdapter(getContext(), Loaf.getList());
         list.setAdapter(adapter);
 
         return view;
     }
 
-    public class CustomAdapter extends ArrayAdapter<DataType>{
-        public CustomAdapter(Context context, ArrayList<DataType> items){
+    public class CustomAdapter extends ArrayAdapter<Loaf>{
+        public CustomAdapter(Context context, ArrayList<Loaf> items){
             super(context, 0, items);
         }
 
@@ -115,15 +99,37 @@ public class LoavesFragment extends Fragment {
                         LayoutInflater.from(
                                 getContext()).inflate(R.layout.loaf_view, parent, false);
             }
+            final Loaf item = Loaf.getList().get(position);
+
             TextView name = (TextView) convertView.findViewById(R.id.loafName);
             TextView description = (TextView) convertView.findViewById(R.id.description);
             TextView price = (TextView) convertView.findViewById(R.id.price);
-            TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
+            final TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
 
-            DataType item = getItem(position);
+            Button minusButton = (Button) convertView.findViewById(R.id.minusButton);
+            Button plusButton = (Button) convertView.findViewById(R.id.plusButton);
+
+            minusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(item.getQuantity() > 0){
+                        item.decreaseQuantity();
+                        quantity.setText(String.format("%s", item.getQuantity()));
+                    }
+                }
+            });
+
+            plusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    item.increaseQuantity();
+                    quantity.setText(String.format("%s", item.getQuantity()));
+                }
+            });
+
             description.setText(item.getDescription());
-            price.setText("$" + item.getPrice());
-            quantity.setText("" + item.getQuantity());
+            price.setText(String.format(Locale.getDefault(), "$%.2f", item.getPrice()));
+            quantity.setText(String.format("%s", item.getQuantity()));
             name.setText(item.getName());
 
             return convertView;

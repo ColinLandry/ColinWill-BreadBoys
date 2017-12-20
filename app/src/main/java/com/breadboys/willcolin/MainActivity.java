@@ -16,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.breadboys.willcolin.JavaBeans.Loaf;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                     CheckoutFragment.OnFragmentInteractionListener,
@@ -42,7 +44,8 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
         }
 
-
+        //initialize inventory
+        Loaf.initializeInventory();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
