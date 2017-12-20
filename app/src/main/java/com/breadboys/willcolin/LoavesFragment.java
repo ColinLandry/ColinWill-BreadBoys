@@ -7,6 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.breadboys.willcolin.JavaBeans.DataType;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 
 /**
@@ -26,6 +35,8 @@ public class LoavesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ListView list;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,9 +75,60 @@ public class LoavesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_loaves, container, false);
+        View view = inflater.inflate(R.layout.fragment_loaves, container, false);
+
+        list = (ListView) view.findViewById(R.id.loavesListView);
+
+        ArrayList<DataType> dataTypeList = new ArrayList<DataType>();
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+        dataTypeList.add(new DataType("Loaf", "loaf testo", 2.99));
+
+        CustomAdapter adapter = new CustomAdapter(getContext(), dataTypeList);
+        list.setAdapter(adapter);
+
+        return view;
     }
 
+    public class CustomAdapter extends ArrayAdapter<DataType>{
+        public CustomAdapter(Context context, ArrayList<DataType> items){
+            super(context, 0, items);
+        }
+
+        public View getView(int position, View convertView,  ViewGroup parent) {
+            //we do this by checking if the item already has a view
+            //and if it does not we provide it with one
+            if(convertView == null){
+                //providing the view
+                convertView =
+                        LayoutInflater.from(
+                                getContext()).inflate(R.layout.loaf_view, parent, false);
+            }
+            TextView name = (TextView) convertView.findViewById(R.id.loafName);
+            TextView description = (TextView) convertView.findViewById(R.id.description);
+            TextView price = (TextView) convertView.findViewById(R.id.price);
+            TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
+
+            DataType item = getItem(position);
+            description.setText(item.getDescription());
+            price.setText("$" + item.getPrice());
+            quantity.setText("" + item.getQuantity());
+            name.setText(item.getName());
+
+            return convertView;
+        }
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
