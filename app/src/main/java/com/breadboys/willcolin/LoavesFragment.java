@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -101,13 +102,14 @@ public class LoavesFragment extends Fragment {
             }
             final Loaf item = Loaf.getList().get(position);
 
+            ImageView image = (ImageView) convertView.findViewById(R.id.loafImage);
             TextView name = (TextView) convertView.findViewById(R.id.loafName);
             TextView description = (TextView) convertView.findViewById(R.id.description);
             TextView price = (TextView) convertView.findViewById(R.id.price);
             final TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
 
-            Button minusButton = (Button) convertView.findViewById(R.id.minusButton);
-            Button plusButton = (Button) convertView.findViewById(R.id.plusButton);
+            ImageView minusButton = (ImageView) convertView.findViewById(R.id.minusButton);
+            ImageView plusButton = (ImageView) convertView.findViewById(R.id.plusButton);
 
             minusButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -127,6 +129,7 @@ public class LoavesFragment extends Fragment {
                 }
             });
 
+            image.setImageResource(item.getImage());
             description.setText(item.getDescription());
             price.setText(String.format(Locale.getDefault(), "$%.2f", item.getPrice()));
             quantity.setText(String.format("%s", item.getQuantity()));
