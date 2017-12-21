@@ -1,12 +1,19 @@
 package com.breadboys.willcolin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.breadboys.willcolin.JavaBeans.Loaf;
 
 
 /**
@@ -26,6 +33,13 @@ public class CheckoutFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Button orderBtn;
+    Button calendarBtn;
+    Button locationBtn;
+
+    long eventStartInMillis= System.currentTimeMillis();
+    long eventEndInMillis= 1234567890;
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,11 +77,49 @@ public class CheckoutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_checkout, container, false);
+            // Inflate the layout for this fragment
+            View view = inflater.inflate(R.layout.fragment_checkout, container, false);
+            TextView totalCost = (TextView) view.findViewById(R.id.totalCostText);
+            totalCost.setText("rr");
+
+            calendarBtn = (Button) view.findViewById(R.id.calendarBtn);
+            locationBtn = (Button) view.findViewById(R.id.locationBtn);
+
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+
+                i.setData(Uri.parse("geo:42.317432,-83.026772"));
+
+                if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(i);
+                }
+            }
+        });
+
+        calendarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_INSERT);
+                i.setType("vnd.android.cursor.item/event") ;
+                i.putExtra("title", "Pick Up");
+                i.putExtra("description", "Some description");
+                i.putExtra("beginTime", eventStartInMillis);
+                i.putExtra("endTime", eventEndInMillis);
+
+
+
+                if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivity(i);
+                }
+            }
+        });
+
+            return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    // TODO: Rename method, update  argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
