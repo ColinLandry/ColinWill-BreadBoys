@@ -1,5 +1,10 @@
 package com.breadboys.willcolin.JavaBeans;
 
+import android.media.Image;
+import android.widget.ImageView;
+
+import com.breadboys.willcolin.R;
+
 import java.util.ArrayList;
 
 /**
@@ -7,6 +12,7 @@ import java.util.ArrayList;
  */
 
 public class Loaf {
+    private int image;
     private String name;
     private String description;
     private double price;
@@ -16,10 +22,19 @@ public class Loaf {
     public Loaf(){
 
     }
-    public Loaf(String name, String description, double price){
+    public Loaf(int image, String name, String description, double price){
+        this.image = image;
         this.name = name;
         this.description = description;
         this.price = price;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -71,16 +86,20 @@ public class Loaf {
     }
 
     public static void initializeInventory(){
-        Loaf pumpernickel = new Loaf("Pumpernickel", "Mouthwatering dark brown round loaf, perfect for spinach dip.", 3.99);
+        if(loaves.size() > 0){
+            return;
+        }
+
+        Loaf pumpernickel = new Loaf(R.drawable.knead, "Pumpernickel", "Mouthwatering dark brown round loaf, perfect for spinach dip.", 3.99);
         loaves.add(pumpernickel);
 
-        Loaf sourdough = new Loaf("Sourdough", "Delicious light round loaf, perfect for parties", 3.99);
+        Loaf sourdough = new Loaf(R.drawable.bake, "Sourdough", "Delicious light round loaf, perfect for parties", 3.99);
         loaves.add(sourdough);
 
-        Loaf white = new Loaf("White Bread", "Classic white bleached wheat, fantastic for sandwiches", 2.99);
+        Loaf white = new Loaf(R.drawable.mixing, "White Bread", "Classic white bleached wheat, fantastic for sandwiches", 2.99);
         loaves.add(white);
 
-        Loaf yumyum = new Loaf("Yum Yum Bread", "The yummiest bread around, only available at Bread Boys", 5.99);
+        Loaf yumyum = new Loaf(R.drawable.resting, "Yum Yum Bread", "The yummiest bread around, only available at Bread Boys", 5.99);
         loaves.add(yumyum);
     }
 }
