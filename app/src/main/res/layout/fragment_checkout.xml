@@ -2,7 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.breadboys.willcolin.CheckoutFragment">
+    android:orientation="vertical"
+    tools:context="com.breadboys.willcolin.CheckoutFragment"
+    android:weightSum="1">
 
 
+    <ListView
+        android:id="@+id/cartList"
+        android:layout_width="match_parent"
+        android:layout_height="162dp"
+        android:layout_weight="0.93" />
+
+    <TextView
+        android:id="@+id/totalCostText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="@dimen/subTitle_fontSize"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/locationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location" />
+
+    <Button
+        android:id="@+id/calendarBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Reminder" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Pick Up Order" />
 </LinearLayout>
