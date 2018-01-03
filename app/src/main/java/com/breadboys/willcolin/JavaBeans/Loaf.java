@@ -90,16 +90,16 @@ public class Loaf {
             return;
         }
 
-        Loaf pumpernickel = new Loaf(R.drawable.knead, "Pumpernickel", "Mouthwatering dark brown round loaf, perfect for spinach dip.", 3.99);
+        Loaf pumpernickel = new Loaf(R.drawable.resting, "Pumpernickel", "Mouthwatering dark brown round loaf, perfect for spinach dip.", 3.99);
         loaves.add(pumpernickel);
 
-        Loaf sourdough = new Loaf(R.drawable.bake, "Sourdough", "Delicious light round loaf, perfect for parties", 3.99);
+        Loaf sourdough = new Loaf(R.drawable.sourdough, "Sourdough", "Delicious light round loaf, perfect for parties", 3.99);
         loaves.add(sourdough);
 
         Loaf white = new Loaf(R.drawable.mixing, "White Bread", "Classic white bleached wheat, fantastic for sandwiches", 2.99);
         loaves.add(white);
 
-        Loaf yumyum = new Loaf(R.drawable.resting, "Yum Yum Bread", "The yummiest bread around, only available at Bread Boys", 5.99);
+        Loaf yumyum = new Loaf(R.drawable.knead, "Yum Yum Bread", "The yummiest bread around, only available at Bread Boys", 5.99);
         loaves.add(yumyum);
     }
 }

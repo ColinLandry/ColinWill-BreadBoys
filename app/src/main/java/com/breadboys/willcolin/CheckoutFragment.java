@@ -10,10 +10,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.breadboys.willcolin.JavaBeans.Loaf;
+
+import java.util.ArrayList;
+import java.util.Locale;
 
 
 /**
@@ -33,6 +39,7 @@ public class CheckoutFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ListView list;
 
     Button orderBtn;
     Button calendarBtn;
@@ -80,7 +87,8 @@ public class CheckoutFragment extends Fragment {
             // Inflate the layout for this fragment
             View view = inflater.inflate(R.layout.fragment_checkout, container, false);
             TextView totalCost = (TextView) view.findViewById(R.id.totalCostText);
-            totalCost.setText("rr");
+            totalCost.setText(String.format(Locale.getDefault(), "$%.2f", 30.30304624));
+
 
             calendarBtn = (Button) view.findViewById(R.id.calendarBtn);
             locationBtn = (Button) view.findViewById(R.id.locationBtn);
@@ -116,7 +124,42 @@ public class CheckoutFragment extends Fragment {
             }
         });
 
+        list = (ListView) view.findViewById(R.id.cartList);
+        CustomAdapter adapter = new CustomAdapter(getContext(), Loaf.getList());
+        list.setAdapter(adapter);
+
+
             return view;
+    }
+
+    public class CustomAdapter extends ArrayAdapter<Loaf> {
+        public CustomAdapter(Context context, ArrayList<Loaf> items){
+            super(context, 0, items);
+        }
+
+        public View getView(int position, View convertView,  ViewGroup parent) {
+            //we do this by checking if the item already has a view
+            //and if it does not we provide it with one
+            if(convertView == null){
+                //providing the view
+                convertView =
+                        LayoutInflater.from(
+                                getContext()).inflate(R.layout.simple_loaf_view, parent, false);
+            }
+            final Loaf item = Loaf.getList().get(position);
+
+            TextView name = (TextView) convertView.findViewById(R.id.loafName);
+            TextView price = (TextView) convertView.findViewById(R.id.price);
+            TextView total = (TextView) convertView.findViewById(R.id.total);
+            final TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
+
+            total.setText(String.format(Locale.getDefault(), "$%.2f", (item.getPrice() * item.getQuantity())));
+            price.setText(String.format(Locale.getDefault(), "$%.2f", item.getPrice()));
+            quantity.setText(String.format("%s", item.getQuantity()));
+            name.setText(item.getName());
+
+            return convertView;
+        }
     }
 
     // TODO: Rename method, update  argument and hook method into UI event
