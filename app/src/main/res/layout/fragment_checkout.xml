@@ -11,7 +11,9 @@
         android:id="@+id/cartList"
         android:layout_width="match_parent"
         android:layout_height="162dp"
-        android:layout_weight="0.93" />
+        android:layout_weight="0.93"
+        android:divider="@null"
+        android:dividerHeight="0dp"/>
 
     <TextView
         android:id="@+id/totalCostText"
