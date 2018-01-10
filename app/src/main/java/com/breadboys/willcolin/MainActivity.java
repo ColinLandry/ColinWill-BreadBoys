@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity
                     MainFragment.OnFragmentInteractionListener,
                     RecipePageFragment.OnFragmentInteractionListener{
 
-   FragmentManager fm;
+    FragmentManager fm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
