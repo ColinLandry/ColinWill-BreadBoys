@@ -42,6 +42,9 @@ public class CheckoutFragment extends Fragment {
     private String mParam2;
     ListView list;
 
+    //Create cart list for checkout
+    ArrayList<Loaf> cartItems = Loaf.getItemsWithQuantity();
+
     Button orderBtn;
     Button calendarBtn;
     Button locationBtn;
@@ -138,19 +141,8 @@ public class CheckoutFragment extends Fragment {
 
         list = (ListView) view.findViewById(R.id.cartList);
 
-//        //Create cart list for checkout
-//        ArrayList<Loaf> cartItems = new ArrayList<Loaf>();
-//
-//        //Loop through loaf list
-//        for(int i = 0; i < Loaf.getList().size(); i++){
-//            //Check if quantity is 0, if not, add to checkout list
-//            if(Loaf.getList().get(i).getQuantity() != 0){
-//                cartItems.add(Loaf.getList().get(i));
-//            }
-//        }
-
         //Set adapter to custom adapter and pass cartItems
-        CustomAdapter adapter = new CustomAdapter(getContext(), Loaf.getList());
+        CustomAdapter adapter = new CustomAdapter(getContext(), cartItems);
         list.setAdapter(adapter);
 
         return view;
@@ -170,12 +162,12 @@ public class CheckoutFragment extends Fragment {
                         LayoutInflater.from(
                                 getContext()).inflate(R.layout.simple_loaf_view, parent, false);
             }
-            final Loaf item = Loaf.getList().get(position);
+            Loaf item = cartItems.get(position);
 
             TextView name = (TextView) convertView.findViewById(R.id.loafName);
             TextView price = (TextView) convertView.findViewById(R.id.price);
             TextView total = (TextView) convertView.findViewById(R.id.total);
-            final TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
+            TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
 
             total.setText(String.format(Locale.getDefault(), "$%.2f", (item.getPrice() * item.getQuantity())));
             price.setText(String.format(Locale.getDefault(), "$%.2f", item.getPrice()));
