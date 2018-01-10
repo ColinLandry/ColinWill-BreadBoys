@@ -90,16 +90,37 @@ public class Loaf {
             return;
         }
 
-        Loaf pumpernickel = new Loaf(R.drawable.resting, "Pumpernickel", "Mouthwatering dark brown round loaf, perfect for spinach dip.", 3.99);
-        loaves.add(pumpernickel);
-
-        Loaf sourdough = new Loaf(R.drawable.sourdough, "Sourdough", "Delicious light round loaf, perfect for parties", 3.99);
-        loaves.add(sourdough);
-
-        Loaf white = new Loaf(R.drawable.mixing, "White Bread", "Classic white bleached wheat, fantastic for sandwiches", 2.99);
+        Loaf white = new Loaf(R.drawable.whitebread_icon, "White Bread", "Classic white bleached wheat, fantastic for sandwiches", 1.99);
         loaves.add(white);
 
-        Loaf yumyum = new Loaf(R.drawable.knead, "Yum Yum Bread", "The yummiest bread around, only available at Bread Boys", 5.99);
+        Loaf wholeWheat = new Loaf(R.drawable.wholewheat_icon, "Whole Wheat", "The healthier alternative to white bread", 3.99);
+        loaves.add(wholeWheat);
+
+        Loaf sourdough = new Loaf(R.drawable.sourdough_icon, "Sourdough", "Delicious light round loaf, perfect for parties", 3.99);
+        loaves.add(sourdough);
+
+        Loaf garlicBread = new Loaf(R.drawable.garlic_icon, "Garlic Bread", "Our delicious white bread toasted to perfection with garlic butter and other herbs", 2.99);
+        loaves.add(garlicBread);
+
+        Loaf baguette = new Loaf(R.drawable.baguette_icon, "White Baguette", "A long tasty baguette infused with flavour", 3.99);
+        loaves.add(baguette);
+
+        Loaf yumyum = new Loaf(R.drawable.yumyum_icon, "Yum Yum Bread", "The yummiest bread around, only available at Bread Boys", 5.99);
         loaves.add(yumyum);
+    }
+
+    public static ArrayList<Loaf> getItemsWithQuantity(){
+        ArrayList<Loaf> tempList = new ArrayList<Loaf>();
+        //Loop through loaf list
+        for(int i = 0; i < Loaf.getList().size(); i++){
+            Loaf loaf = Loaf.getList().get(i);
+            //Check if quantity is 0, if not, add to checkout list
+            if(loaf.getQuantity() > 0){
+                tempList.add(loaf);
+                System.out.println(loaf.getName() + ": " + loaf.getQuantity());
+            }
+        }
+        System.out.println(tempList);
+        return tempList;
     }
 }
