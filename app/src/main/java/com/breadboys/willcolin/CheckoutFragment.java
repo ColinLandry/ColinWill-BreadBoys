@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.breadboys.willcolin.JavaBeans.Loaf;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Locale;
 
 
@@ -84,14 +85,25 @@ public class CheckoutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-            // Inflate the layout for this fragment
-            View view = inflater.inflate(R.layout.fragment_checkout, container, false);
-            TextView totalCost = (TextView) view.findViewById(R.id.totalCostText);
-            totalCost.setText(String.format(Locale.getDefault(), "$%.2f", 30.30304624));
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_checkout, container, false);
+        TextView totalCostText = (TextView) view.findViewById(R.id.totalCostText);
 
+        //Calculate total cost
+        double totalCost = 0;
+        double cost = 0;
 
-            calendarBtn = (Button) view.findViewById(R.id.calendarBtn);
-            locationBtn = (Button) view.findViewById(R.id.locationBtn);
+        for(int i = 0; i < Loaf.getList().size(); i++){
+            //Set cost to loaf quantity and price for current item
+            cost = Loaf.getList().get(i).getQuantity() * Loaf.getList().get(i).getPrice();
+            totalCost += cost;
+        }
+
+        //Update total cost text
+        totalCostText.setText(String.format(Locale.getDefault(), "$%.2f", totalCost));
+
+        calendarBtn = (Button) view.findViewById(R.id.calendarBtn);
+        locationBtn = (Button) view.findViewById(R.id.locationBtn);
 
         locationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,11 +137,23 @@ public class CheckoutFragment extends Fragment {
         });
 
         list = (ListView) view.findViewById(R.id.cartList);
+
+//        //Create cart list for checkout
+//        ArrayList<Loaf> cartItems = new ArrayList<Loaf>();
+//
+//        //Loop through loaf list
+//        for(int i = 0; i < Loaf.getList().size(); i++){
+//            //Check if quantity is 0, if not, add to checkout list
+//            if(Loaf.getList().get(i).getQuantity() != 0){
+//                cartItems.add(Loaf.getList().get(i));
+//            }
+//        }
+
+        //Set adapter to custom adapter and pass cartItems
         CustomAdapter adapter = new CustomAdapter(getContext(), Loaf.getList());
         list.setAdapter(adapter);
 
-
-            return view;
+        return view;
     }
 
     public class CustomAdapter extends ArrayAdapter<Loaf> {
