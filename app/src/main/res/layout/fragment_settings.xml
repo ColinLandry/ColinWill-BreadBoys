@@ -18,8 +18,16 @@
         android:textSize="@dimen/subTitle_fontSize"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/settingsInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="5dp"
+        android:paddingStart="15dp"
+        android:text="@string/number_desc" />
+
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/numberInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -29,9 +37,9 @@
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submitNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Set Number" />
 
 </LinearLayout>
