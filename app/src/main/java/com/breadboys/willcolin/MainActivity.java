@@ -86,7 +86,10 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.replace(R.id.content, new SettingsFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -113,10 +116,6 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
         } else if (id == R.id.nav_contact) {
             transaction.replace(R.id.content, new ContactFragment());
-            transaction.addToBackStack(null);
-            transaction.commit();
-        } else if (id == R.id.nav_settings) {
-            transaction.replace(R.id.content, new SettingsFragment());
             transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.nav_main) {
