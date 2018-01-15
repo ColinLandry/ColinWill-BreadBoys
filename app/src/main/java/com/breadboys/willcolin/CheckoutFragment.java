@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.breadboys.willcolin.JavaBeans.Loaf;
 
@@ -44,6 +45,7 @@ public class CheckoutFragment extends Fragment {
 
     //Create cart list for checkout
     ArrayList<Loaf> cartItems = Loaf.getItemsWithQuantity();
+    CustomAdapter adapter;
 
     Button orderBtn;
     Button calendarBtn;
@@ -107,6 +109,7 @@ public class CheckoutFragment extends Fragment {
 
         calendarBtn = (Button) view.findViewById(R.id.calendarBtn);
         locationBtn = (Button) view.findViewById(R.id.locationBtn);
+        orderBtn = (Button) view.findViewById(R.id.submit);
 
         locationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,10 +142,35 @@ public class CheckoutFragment extends Fragment {
             }
         });
 
+        orderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ListView loafList = (ListView) view.findViewById(R.id.cartList);
+
+                //if loaf list has no items with a quantity
+                if(Loaf.getItemsWithQuantity().size() == 0){
+                    //Show no items in list notification
+                    Toast.makeText(getContext(), "No items in checkout list.", Toast.LENGTH_SHORT).show();
+                }else {
+                    //Show notification for placed order
+                    Toast.makeText(getContext(), "Your order was placed!", Toast.LENGTH_SHORT).show();
+
+                    //loop through items with quantity and set to 0
+                    for(int i = 0; i < Loaf.getItemsWithQuantity().size(); i++){
+                        Loaf.getItemsWithQuantity().get(i).setQuantity(0);
+                    }
+
+                    //Notify the adapter and clear
+                    adapter.notifyDataSetChanged();
+                    adapter.clear();
+                }
+            }
+        });
+
         list = (ListView) view.findViewById(R.id.cartList);
 
         //Set adapter to custom adapter and pass cartItems
-        CustomAdapter adapter = new CustomAdapter(getContext(), cartItems);
+        adapter = new CustomAdapter(getContext(), cartItems);
         list.setAdapter(adapter);
 
         return view;

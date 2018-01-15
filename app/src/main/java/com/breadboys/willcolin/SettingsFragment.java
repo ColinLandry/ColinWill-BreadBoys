@@ -97,14 +97,14 @@ public class SettingsFragment extends Fragment {
                     //String for toast popup
                     final String toastString = "Number set to: \'" + userNumber + "\', Thank you!";
 
-                    Toast.makeText(getContext(), toastString, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), toastString, Toast.LENGTH_SHORT).show();
 
                     //If the number is too long, display toast
                 }else if(numberInput.getText().toString().length() > 10){
-                    Toast.makeText(getContext(), "The number you input was too long, use format (##########)", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "The number you input was too long, use format (##########)", Toast.LENGTH_SHORT).show();
                     //If the number is too short, display toast
                 }else if(numberInput.getText().toString().length() < 10){
-                    Toast.makeText(getContext(), "The number you input was too short, use format (##########)", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "The number you input was too short, use format (##########)", Toast.LENGTH_SHORT).show();
                 }
 
             }
