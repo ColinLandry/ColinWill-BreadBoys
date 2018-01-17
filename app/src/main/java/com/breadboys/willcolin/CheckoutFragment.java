@@ -51,6 +51,8 @@ public class CheckoutFragment extends Fragment {
     Button calendarBtn;
     Button locationBtn;
 
+    TextView totalCostText;
+
     long eventStartInMillis= System.currentTimeMillis();
     long eventEndInMillis= 1234567890;
 
@@ -92,7 +94,7 @@ public class CheckoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
-        TextView totalCostText = (TextView) view.findViewById(R.id.totalCostText);
+        totalCostText = (TextView) view.findViewById(R.id.totalCostText);
 
         //Calculate total cost
         double totalCost = 0;
@@ -116,7 +118,7 @@ public class CheckoutFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
 
-                i.setData(Uri.parse("geo:42.317432,-83.026772"));
+                i.setData(Uri.parse("geo:0,0?q=42.317432,-83.026772(Store)"));
 
                 if(i.resolveActivity(getActivity().getPackageManager()) != null){
                     startActivity(i);
@@ -156,9 +158,14 @@ public class CheckoutFragment extends Fragment {
                     Toast.makeText(getContext(), "Your order was placed!", Toast.LENGTH_SHORT).show();
 
                     //loop through items with quantity and set to 0
-                    for(int i = 0; i < Loaf.getItemsWithQuantity().size(); i++){
-                        Loaf.getItemsWithQuantity().get(i).setQuantity(0);
+                    for(int i = 0; i < Loaf.getList().size(); i++){
+                        if(Loaf.getList().get(i).getQuantity() > 0){
+                            Loaf.getList().get(i).setQuantity(0);
+                        }
                     }
+
+                    //Set total to 0
+                    totalCostText.setText("$0.00");
 
                     //Notify the adapter and clear
                     adapter.notifyDataSetChanged();
