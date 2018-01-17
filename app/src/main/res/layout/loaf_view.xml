@@ -42,7 +42,7 @@
             android:layout_toEndOf="@+id/imageLayout"
             android:text="Loaf Name"
             android:textColor="#040404"
-            android:textSize="15dp"
+            android:textSize="@dimen/text_fontSize"
             android:textStyle="bold"
             android:typeface="sans" />
 
@@ -67,7 +67,7 @@
                 android:paddingStart="0dp"
                 android:text="Placeholder"
                 android:textColor="#1d1d1d"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_fontSize"
                 android:textStyle="italic" />
 
             <TextView
@@ -79,7 +79,7 @@
                 android:paddingStart="0dp"
                 android:text="$10"
                 android:textColor="#343434"
-                android:textSize="12sp" />
+                android:textSize="@dimen/text_fontSize" />
 
             <ImageView
                 android:id="@+id/minusButton"
@@ -97,7 +97,7 @@
                 android:paddingRight="15dp"
                 android:text="0"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textSize="@dimen/text_fontSize"
                 android:textStyle="bold" />
 
             <ImageView

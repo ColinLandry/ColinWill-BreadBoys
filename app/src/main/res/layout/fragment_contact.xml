@@ -27,7 +27,7 @@
         android:background="@color/colorPrimary"
         android:text="Bread Wiki"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
     <Button
         android:id="@+id/callButton"
@@ -40,7 +40,7 @@
         android:background="@color/colorPrimary"
         android:text="Call Us"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
     <Button
         android:id="@+id/emailButton"
@@ -53,7 +53,7 @@
         android:background="@color/colorPrimary"
         android:text="Email Us"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
     <Button
         android:id="@+id/fbButton"
@@ -66,6 +66,6 @@
         android:background="@color/colorPrimary"
         android:text="Facebook Page"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
 </LinearLayout>

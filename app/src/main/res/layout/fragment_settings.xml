@@ -11,11 +11,11 @@
     <TextView
         android:id="@+id/settingsTitle"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="Add A Contact Number"
         android:textAlignment="center"
-        android:textSize="@dimen/subTitle_fontSize"
+        android:textSize="@dimen/title_fontSize"
         android:textStyle="bold" />
 
     <TextView
@@ -24,7 +24,9 @@
         android:layout_height="wrap_content"
         android:paddingEnd="5dp"
         android:paddingStart="15dp"
-        android:text="@string/number_desc" />
+        android:text="@string/number_desc"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_fontSize" />
 
     <EditText
         android:id="@+id/numberInput"
@@ -40,6 +42,7 @@
         android:id="@+id/submitNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:text="Set Number" />
 
 </LinearLayout>
