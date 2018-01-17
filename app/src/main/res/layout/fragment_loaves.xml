@@ -6,9 +6,9 @@
     tools:context="com.breadboys.willcolin.LoavesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Loaves of bread" />
 
+    <ListView
+        android:id="@+id/loavesListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

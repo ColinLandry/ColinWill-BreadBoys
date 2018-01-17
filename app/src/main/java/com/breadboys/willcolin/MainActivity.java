@@ -2,11 +2,8 @@ package com.breadboys.willcolin;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.breadboys.willcolin.JavaBeans.Loaf;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -26,7 +25,8 @@ public class MainActivity extends AppCompatActivity
                     MainFragment.OnFragmentInteractionListener,
                     RecipePageFragment.OnFragmentInteractionListener{
 
-   FragmentManager fm;
+    FragmentManager fm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,16 +42,10 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
         }
 
+        //initialize inventory
+        Loaf.initializeInventory();
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -89,7 +83,11 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out, R.anim.slide_up_in, R.anim.slide_up_out);
+            transaction.replace(R.id.content, new SettingsFragment());
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -101,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentTransaction transaction = fm.beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_back_in, R.anim.slide_back_out);
 
         if (id == R.id.nav_loaves) {
             transaction.replace(R.id.content, new LoavesFragment());
@@ -116,10 +115,6 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
         } else if (id == R.id.nav_contact) {
             transaction.replace(R.id.content, new ContactFragment());
-            transaction.addToBackStack(null);
-            transaction.commit();
-        } else if (id == R.id.nav_settings) {
-            transaction.replace(R.id.content, new SettingsFragment());
             transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.nav_main) {

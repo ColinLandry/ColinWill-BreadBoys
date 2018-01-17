@@ -10,8 +10,8 @@
         android:id="@+id/contactTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:gravity="center_vertical"
+        android:padding="20dp"
         android:text="Contact Us!"
         android:textAlignment="center"
         android:textSize="@dimen/title_fontSize" />
@@ -21,47 +21,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="0.75"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary"
         android:text="Bread Wiki"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
     <Button
         android:id="@+id/callButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="0.75"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary"
         android:text="Call Us"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
     <Button
         android:id="@+id/emailButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="0.75"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary"
         android:text="Email Us"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
     <Button
         android:id="@+id/fbButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_weight="0.75"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary"
         android:text="Facebook Page"
         android:textAllCaps="false"
-        android:textSize="@dimen/button_fontSize" />
+        android:textSize="@dimen/subTitle_fontSize" />
 
 </LinearLayout>

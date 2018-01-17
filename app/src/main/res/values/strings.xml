@@ -11,4 +11,6 @@
         to emulate a professional brand with quality products. Our goal is to
         provide a bakery aimed at serving the customer.
     </string>
+    <string name="number_desc">Please input your number into the field and set it,
+        if there are any problems with your order, we may contact you with this info.</string>
 </resources>
